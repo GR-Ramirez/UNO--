@@ -13,9 +13,13 @@ public class Reversa extends Carta{
         color= col;
     }
 
+    @Override
     boolean aceptar(Carta eval){
-        if (!super.aceptar(eval))
-            return false;
+        if (super.aceptar(eval))
+            return true;
+        if ((eval instanceof Reversa)||(eval.color.equals(this.color)))
+            return true;
+        return false;
 
     }
 

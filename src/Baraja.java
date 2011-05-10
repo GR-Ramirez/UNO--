@@ -20,8 +20,22 @@ public class Baraja {
     }
 
     public static void crear(){
-        Random aleatorio= new Random(Math.round(Math.random()));// trata de crear la semilla más aleatoria posible
-        Collections.shuffle(baraja,aleatorio);
+       int i=0;
+       for( Carta.Color col: Carta.Color.values()){
+            for(int num: Numerica.legales)
+                baraja.add(new Numerica(num,col));
+            for(i=0; i<2; i++){
+                baraja.add(new Reversa(col));
+                baraja.add(new TomaDos(col));
+                baraja.add(new Salta(col));
+            }
+       }
+       for(i=0; i<4; i++){
+           baraja.add(new Comodin());
+           baraja.add(new Toma4());
+       }
+       Random aleatorio= new Random(Math.round(Math.random()*10));// trata de crear la semilla más aleatoria posible
+       Collections.shuffle(baraja,aleatorio);
     }
 
     public static void rebarajar(){
@@ -31,6 +45,7 @@ public class Baraja {
                 for(Carta aQuitar: adores.exponer())
                     baraja.remove(aQuitar);
             }
+         baraja.remove(Juego.enJuego);
     }
 
     public static Carta obtenerCarta(){

@@ -11,7 +11,9 @@ public class Toma4 extends Comodin{
 
 
     void efecto(){
-        //llamada metodo para cambia
+        super.efecto();
+        Juego.siguiente().tomarCartas(4);
+        Juego.siguiente().pasar(1);
     }
 
 }

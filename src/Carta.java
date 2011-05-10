@@ -12,14 +12,19 @@ public abstract class Carta{
     int valor;
 
 
-   boolean aceptar(Carta evaluada){
+  boolean aceptar(Carta evaluada){
+       boolean sePuede= true;
+       if (evaluada instanceof Comodin)
+           return sePuede;
        if (evaluada instanceof Toma4){
            for (Carta enMano: Juego.jugadores[Juego.activo].exponer()){
                if (enMano.color.equals(Juego.enJuego.color))
                    return false;
            }
        }
-       return true;
+       else
+           sePuede=false;
+       return sePuede;
    }
 
    abstract void efecto();

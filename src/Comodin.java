@@ -18,6 +18,8 @@ public class Comodin extends Carta{
         return false;
     }
 
-    void efecto()
+    void efecto(){
+       //codigo para cambiar de color
+    }
 
 }

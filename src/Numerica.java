@@ -8,7 +8,7 @@
  * @author Owner
  */
 public class Numerica extends Carta {
-   final static int[] legales= {0, 1, 1, 2, 2, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
+   final static int[] legales= {0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9};
    final int numero;
 
    public Numerica(int num, Color color){
@@ -19,11 +19,14 @@ public class Numerica extends Carta {
 
    @Override
    boolean aceptar(Carta evaluar){
-        if (!super.aceptar(evaluar))
-            return false;
+        if (super.aceptar(evaluar))
+            return true;
         if (evaluar.color.equals(this.color))
              return true;
-        return true;
+        if (evaluar instanceof Numerica)
+            if(evaluar.valor==this.valor)
+                 return true;
+        return false;
    }
 
    void efecto(){

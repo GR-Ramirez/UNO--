@@ -18,4 +18,13 @@ public class TomaDos extends Carta{
         Juego.siguiente().tomarCartas(2);
         Juego.siguiente().pasar(1);
     }
+
+    @Override
+    boolean aceptar(Carta eval){
+        if(super.aceptar(eval))
+            return true;
+        if ((eval.color.equals(this.color))||(eval instanceof TomaDos))
+            return true;
+        return false;
+    }
 }
