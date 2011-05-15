@@ -1,3 +1,6 @@
+package CodigoJuego;
+
+import CodigoJuego.Baraja;
 import java.util.ArrayList;
 import java.util.Collections;
 /**

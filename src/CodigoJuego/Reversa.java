@@ -1,3 +1,5 @@
+package CodigoJuego;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,6 +13,7 @@ public class Reversa extends Carta{
 
     Reversa(Color col){
         color= col;
+        valor= 20;
     }
 
     @Override

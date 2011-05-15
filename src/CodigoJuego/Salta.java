@@ -1,3 +1,5 @@
+package CodigoJuego;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -10,6 +12,7 @@
 public class Salta extends Carta{
     Salta(Color col){
         color= col;
+        valor= 20;
     }
     @Override
     boolean aceptar(Carta eva){
