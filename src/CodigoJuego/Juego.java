@@ -1,3 +1,8 @@
+package CodigoJuego;
+
+
+
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -13,7 +18,7 @@ public class Juego {
     static private byte direccion;
     static Carta enJuego;
 
-    Juego(Jugador... jug){
+    Juego(Jugador... jug){//no verifica que sean diferentes nombres, esto tendremos que corregirlo luego
         jugadores= jug;
         direccion = 1;
         enJuego= Baraja.obtenerCarta();
@@ -34,5 +39,17 @@ public class Juego {
         if (seguis == -1)
             seguis = jugadores.length -1;
         return seguis;
+    }
+
+    public static void flujoJuego(){//si crees que de otra manera se implementa mejor, cambialo
+        for (Jugador cadauno: jugadores)
+            cadauno.tomarCartas(7);
+         while (true){//garantiza que se este repitiendo todo esto, talvez despues la cambiamos a recursiva
+            //Flujo de juego, estoy apurado y no lo puedo pensar bien ahorita. 
+             if (jugadores[activo].exponer().length==1){
+                //codigo para felicitar al ganador
+                return;
+            }
+        }
     }
 }
