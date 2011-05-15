@@ -1,3 +1,5 @@
+package CodigoJuego;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -12,6 +14,7 @@ public class TomaDos extends Carta{
 
     TomaDos(Color color){
         this.color= color;
+        valor= 20;
     }
 
     void efecto(){
