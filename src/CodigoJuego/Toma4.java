@@ -17,6 +17,7 @@ public class Toma4 extends Comodin{
     @Override
     void efecto(){
         super.efecto();
+         System.out.println(Juego.siguiente().nombre + " pierde un turno y toma 4 cartas.");
         Juego.siguiente().tomarCartas(4);
         Juego.siguiente().pasar(1);
     }
@@ -24,7 +25,7 @@ public class Toma4 extends Comodin{
    public String toString(){
         StringBuilder s= new StringBuilder();
         s.append("-Este es un Toma4.");
-        if (color.equals(color.ROJO)||color.equals(color.AZUL)||color.equals(color.AMARILLO)||color.equals(color.VERDE))
+        if (color != null)
             s.append(" Se le ha asignado el color " + color.masculino);
         return s.toString();
     }

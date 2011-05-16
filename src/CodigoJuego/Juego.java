@@ -1,5 +1,7 @@
 package CodigoJuego;
 
+import java.util.Scanner;
+
 
 
 
@@ -28,6 +30,7 @@ public class Juego {
 
     static void cambioDir(){
         direccion *= -1;
+        System.out.println("Ha cambiado la dirección del juego.");
     }
 
     static Jugador siguiente(){
@@ -43,16 +46,75 @@ public class Juego {
         return seguis;
     }
 
-    public static void flujoJuego(){//si crees que de otra manera se implementa mejor, cambialo
+    static int calcularPuntaje(){
+        int cPunt= 0;
+        for(Jugador jugando: jugadores)
+            cPunt+= jugando.puntuacion();
+        cPunt-= jugadores[activo].puntuacion();
+        return cPunt;
+    }
+
+    public void flujoJuego(){//si crees que de otra manera se implementa mejor, cambialo
+        Scanner lee= new Scanner(System.in);
+        Baraja.crear();
         for (Jugador cadauno: jugadores)
             cadauno.tomarCartas(7);
-         while (true){//garantiza que se este repitiendo todo esto, talvez despues la cambiamos a recursiva
-            //Flujo de juego, estoy apurado y no lo puedo pensar bien ahorita. 
+        enJuego= Baraja.obtenerCarta();
+        System.out.println("Se revela la primera carta: " + enJuego.toString());
+        enJuego.efecto();
+         while (true){
+             System.out.println("Turno de "+ jugadores[activo].nombre +"\nLa carta activa es "+ enJuego.toString()+ "\n\tMano");
+             for(Carta mn: jugadores[activo].exponer())
+                 System.out.println(mn.toString());
+             if(jugadores[activo].puede()){
+                 System.out.println("Elije la carta que vayas a usar o pasa toma una (0):");
+                 manoJugado:
+                 while(true){
+                     short s= lee.nextShort();
+                     if(s==0){
+                         jugadores[activo].tomarUna();
+                         System.out.println(jugadores[activo].tomada.toString()+
+                                 " La piensas jugar? \n1.Sí \n2.No");
+                         for(;;){
+                             s= lee.nextShort();
+                             if(s==1){
+                                 if(enJuego.aceptar(jugadores[activo].tomada)){
+                                     enJuego= jugadores[activo].tomada;
+                                     System.out.println("La carta Descartar pasa ser " + enJuego.toString());
+                                     enJuego.efecto();
+                                     break manoJugado;
+                                 }
+                                 else{
+                                     System.out.println("No podes jugar esa carta.");
+                                     jugadores[activo].ponerEnMano();
+                                     break manoJugado;
+                                 }
+                             }else if(s==2){
+                                 System.out.println("Como quieras.");
+                                    jugadores[activo].ponerEnMano();
+                                     break manoJugado;
+                             } else
+                                 System.out.println("Ese no es un comando reconocido");
+                         }
+                     }else if(s>0&&s<=jugadores[activo].exponer().length){
+                         if(enJuego.aceptar(jugadores[activo].exponer()[s-1])){
+                                     enJuego= jugadores[activo].exponer()[s-1];
+                                     jugadores[activo].remover(s-1);
+                                     System.out.println("La carta Descartar pasa ser " + enJuego.toString());
+                                     enJuego.efecto();
+                                     break manoJugado;
+                          }  else
+                             System.out.println("No podes jugar esa carta ahora.");
+                     }else
+                         System.out.println("Comando no reconocido.");
+                 }
+             }else
+             System.out.println("Lo siento, pero debes turnos por pasar. No desesperes, te falta uno menos.");
              if (jugadores[activo].exponer().length==1){
-                //codigo para felicitar al ganador
+                 System.out.println("Felicidades, " + jugadores[activo].nombre + " has ganado esta partida y te quedas con " + calcularPuntaje()+ " puntos!");
                 return;
             }
-
+             activo = sigue();
         }
     }
 }

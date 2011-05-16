@@ -24,6 +24,7 @@ public class Salta extends Carta{
     }
 
     void efecto(){
+        System.out.println(Juego.siguiente().nombre + " pierde un turno");
         Juego.siguiente().pasar(1);
     }
 

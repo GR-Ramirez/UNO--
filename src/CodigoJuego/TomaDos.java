@@ -18,6 +18,7 @@ public class TomaDos extends Carta{
     }
 
     void efecto(){
+         System.out.println(Juego.siguiente().nombre + " pierde un turno y toma 2 cartas.");
         Juego.siguiente().tomarCartas(2);
         Juego.siguiente().pasar(1);
     }

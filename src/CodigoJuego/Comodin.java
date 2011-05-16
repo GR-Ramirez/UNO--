@@ -1,5 +1,7 @@
 package CodigoJuego;
 
+import java.util.Scanner;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -23,14 +25,35 @@ public class Comodin extends Carta{
     }
 
     void efecto(){
-       //codigo para cambiar de color
+       Scanner sc= new Scanner(System.in);
+        System.out.println("\nElija el nuevo color del comodín: \n1. Rojo \n2. Verde"+
+                "\n3. Amarillo \n4. Azul");
+       veriCol:
+        while (true){
+        byte y= sc.nextByte();
+            switch(y){
+               case 1:
+                    color= Color.ROJO;
+                    break veriCol;
+                case 2:
+                    color= Color.VERDE;
+                    break veriCol;
+                case 3:
+                    color= Color.AMARILLO;
+                    break veriCol;
+                case 4:
+                    color= Color.AZUL;
+                    break veriCol;
+                default:
+                    System.out.println("Esa no es una opción valida.");
+             }
+       }
     }
 
     public String toString(){
         StringBuilder s= new StringBuilder();
         s.append("-Este es un comodín.");
-        if (color.equals(color.ROJO)||color.equals(color.AZUL)||color.equals(color.AMARILLO)||color.equals(color.VERDE))
-            s.append(" Se le ha asignado el color " + color.masculino);
+        if (color != null)           s.append(" Se le ha asignado el color " + color.masculino);
         return s.toString();
     }
 }
