@@ -29,4 +29,12 @@ public class Reversa extends Carta{
     void efecto(){
         Juego.cambioDir();
     }
+
+    public String toString(){
+        StringBuilder s= new StringBuilder();
+        s.append("-Una Carta de Reversa ");
+        s.append(color.femenino);
+        return s.toString();
+
+    }
 }

@@ -1,4 +1,5 @@
 package CodigoJuego;
+import java.lang.StringBuilder;
 
 /*
  * To change this template, choose Tools | Templates
@@ -9,7 +10,12 @@ package CodigoJuego;
  * @author Owner
  */
 public abstract class Carta{
-    public enum Color {ROJO, AZUL, VERDE, AMARILLO}
+    public enum Color {ROJO("rojo","roja"), AZUL("azul","azul"), VERDE("verde","verde"), AMARILLO("amarillo","amarilla");
+    public final String masculino, femenino;
+    Color(String masc, String fem){
+        masculino= masc;
+        femenino= fem;
+    }}
     Color color;
     int valor;
 
@@ -30,6 +36,7 @@ public abstract class Carta{
    }
 
    abstract void efecto();
-
+    @Override
+   public abstract String toString();
 }
 

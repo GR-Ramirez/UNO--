@@ -20,5 +20,13 @@ public class Toma4 extends Comodin{
         Juego.siguiente().tomarCartas(4);
         Juego.siguiente().pasar(1);
     }
+    @Override
+   public String toString(){
+        StringBuilder s= new StringBuilder();
+        s.append("-Este es un Toma4.");
+        if (color.equals(color.ROJO)||color.equals(color.AZUL)||color.equals(color.AMARILLO)||color.equals(color.VERDE))
+            s.append(" Se le ha asignado el color " + color.masculino);
+        return s.toString();
+    }
 
 }
