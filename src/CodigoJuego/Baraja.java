@@ -14,7 +14,7 @@ import java.util.Random;
  * @author 
  */
 public class Baraja {
-
+    static boolean won;
     private static LinkedList<Carta> baraja= new LinkedList();
 
     private Baraja(){
@@ -36,7 +36,7 @@ public class Baraja {
            baraja.add(new Comodin());
            baraja.add(new Toma4());
        }
-       Random aleatorio= new Random(Math.round(Math.random()*10));// trata de crear la semilla más aleatoria posible
+       Random aleatorio= new Random(Math.round(Math.random()*23));// trata de crear la semilla más aleatoria posible
        Collections.shuffle(baraja,aleatorio);
     }
 
