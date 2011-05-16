@@ -12,6 +12,7 @@ public class Jugador {
     private long puntos= 0;
     private ArrayList<Carta> mano;
     private byte turnosAPasar= 0;
+    Carta tomada;
     
     public Jugador(String nombre){
         this.nombre=nombre;
@@ -21,8 +22,6 @@ public class Jugador {
     private void tomarCartas(int cuantas, int van){
         if (cuantas==van)
             return;
-        if (Baraja.barajaVacia())
-            Baraja.rebarajar();
         this.mano.add(Baraja.obtenerCarta());
         tomarCartas(cuantas, ++van);
     }

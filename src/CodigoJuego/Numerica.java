@@ -35,6 +35,13 @@ public class Numerica extends Carta {
        //nada
    }
 
+   public String toString(){
+        StringBuilder s= new StringBuilder();
+        s.append("-Un " + this.numero +" ");
+        s.append(color.masculino);
+        return s.toString();
+   }
+
 
 }
 
