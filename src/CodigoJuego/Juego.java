@@ -18,7 +18,7 @@ public class Juego {
     static private byte direccion;
     static Carta enJuego;
 
-    Juego(String... jug){//no verifica que sean diferentes nombres, esto tendremos que corregirlo luego
+   public Juego(String[] jug){//no verifica que sean diferentes nombres, esto tendremos que corregirlo luego
         jugadores= new Jugador[jug.length];
         for(int i=0; i<jug.length;i++)
             jugadores[i]= new Jugador(jug[i]);
