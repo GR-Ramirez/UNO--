@@ -18,8 +18,10 @@ public class Juego {
     static private byte direccion;
     static Carta enJuego;
 
-    Juego(Jugador... jug){//no verifica que sean diferentes nombres, esto tendremos que corregirlo luego
-        jugadores= jug;
+    Juego(String... jug){//no verifica que sean diferentes nombres, esto tendremos que corregirlo luego
+        jugadores= new Jugador[jug.length];
+        for(int i=0; i<jug.length;i++)
+            jugadores[i]= new Jugador(jug[i]);
         direccion = 1;
         enJuego= Baraja.obtenerCarta();
     }
@@ -50,6 +52,7 @@ public class Juego {
                 //codigo para felicitar al ganador
                 return;
             }
+
         }
     }
 }
