@@ -30,4 +30,11 @@ public class TomaDos extends Carta{
             return true;
         return false;
     }
+
+    public String toString(){
+        StringBuilder s= new StringBuilder();
+        s.append("-Una Carta de TomaDos ");
+        s.append(color.femenino);
+        return s.toString();
+    }
 }

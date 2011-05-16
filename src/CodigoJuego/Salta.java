@@ -26,5 +26,12 @@ public class Salta extends Carta{
     void efecto(){
         Juego.siguiente().pasar(1);
     }
+
+    public String toString(){
+        StringBuilder s= new StringBuilder();
+        s.append("-Una Carta Salta ");
+        s.append(color.femenino);
+        return s.toString();
+    }
 }
 

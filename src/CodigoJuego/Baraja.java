@@ -50,11 +50,13 @@ public class Baraja {
          baraja.remove(Juego.enJuego);
     }
 
-    public static Carta obtenerCarta(){
+    static Carta obtenerCarta(){
+       if (barajaVacia())
+           rebarajar();
        return baraja.pollFirst();
     }
 
-    public static boolean barajaVacia(){
+    private static boolean barajaVacia(){
         return baraja.isEmpty();
     }
     
